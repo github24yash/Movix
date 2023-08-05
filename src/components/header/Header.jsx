@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { SlMenu } from "react-icons/sl";
 import { VscChromeClose } from "react-icons/vsc";
@@ -17,6 +17,35 @@ const Header = () => {
     const [showSearch, setShowSearch] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
+
+    useEffect(()=>{
+      window.scrollTo(0,0);
+    },[location])
+
+    const controllNavbar=()=>{
+        if(window.scrollY>200){
+          if(window.scrollY>lastScrollY && !mobileMenu){
+            setShow("hide");
+          }
+          else{
+            setShow("show");
+          }
+         
+        }
+        else {
+          setShow("top");
+        }
+
+        setLastScrollY(window.scrollY)
+    }
+
+    useEffect(()=>{
+      window.addEventListener("scroll",controllNavbar);
+      return ()=>{
+        window.removeEventListener("scroll",controllNavbar);
+      }
+
+    },[lastScrollY])
 
     const searchQueryHandler=(eve)=>{
       if(eve.key ==="Enter" && query.length > 0){
@@ -37,6 +66,16 @@ const Header = () => {
       setShowSearch(false);
     }
 
+    const navigationHandler=(type)=>{
+        if(type==="movie"){
+          navigate("/explore/movie");
+        }
+        else {
+          navigate("/explore/tv");
+        }
+        setMobileMenu(false);
+    }
+
     return (
         <header className={`header ${mobileMenu ? "mobileView":""} ${show}`}>
           <ContentWrapper>
@@ -44,10 +83,10 @@ const Header = () => {
               <img src={logo}  alt=""/>
             </div>
             <ul className="menuItems">
-              <li className="menuItem">Movies</li>
-              <li className="menuItem">Tv Shows</li>
-              <li className="menuItem">
-                <HiOutlineSearch/>
+              <li className="menuItem" onClick={()=>{ navigationHandler("movie")}}>Movies</li>
+              <li className="menuItem" onClick={()=>{ navigationHandler("tv")}}>Tv Shows</li>
+              <li className="menuItem" >
+                <HiOutlineSearch onClick={openSearch}/>
               </li>
             </ul>
 

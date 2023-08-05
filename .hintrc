@@ -8,9 +8,11 @@
       {
         "ignore": [
           "-webkit-text-size-adjust",
-          "font-synthesis"
+          "font-synthesis",
+          "backdrop-filter"
         ]
       }
-    ]
+    ],
+    "css-prefix-order": "off"
   }
 }

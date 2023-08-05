@@ -58,7 +58,7 @@ const Header = () => {
 
           </ContentWrapper>
 
-          <div className="searchBar">
+         { showSearch && <div className="searchBar">
             <ContentWrapper>
             <div className="searchInput">
             <input 
@@ -71,7 +71,7 @@ const Header = () => {
 
           </div>
             </ContentWrapper>
-          </div>
+          </div>}
         </header>
     );
 };

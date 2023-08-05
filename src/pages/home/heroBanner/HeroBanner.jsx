@@ -5,7 +5,7 @@ import {useNavigate } from 'react-router-dom'
 import UseFetch from '../../../hooks/UseFetch';
 import { useSelector } from 'react-redux';
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper"
-import Img from '../../../components/lazyLoadImage/Img';
+// import Img from '../../../components/lazyLoadImage/Img';
 
 
 
@@ -27,13 +27,13 @@ const HeroBanner = () => {
         if(eve.key ==="Enter" && query.length > 0){
           navigate(`/search/${query}`);
         }
-    }
+    };
   
   return (
     <div className='heroBanner'>
 
       {!loading && <div className='backdrop-img'>
-        <Img src={background} />
+        <img src={background}/>
       </div>}
       {/* <div className="opacity-layer">
 

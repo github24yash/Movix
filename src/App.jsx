@@ -39,7 +39,7 @@ const fetchApiConfig=()=>{
 
   return (
     <BrowserRouter>
-    {/* <Header/> */}
+    <Header/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/:mediaType/:id' element={<Details/>}  />
@@ -47,7 +47,7 @@ const fetchApiConfig=()=>{
         <Route path='/explore/:mediaType' element={<Explore/>} />
         <Route path='*' element = {<PageNotFound/>}/>
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   )
 }

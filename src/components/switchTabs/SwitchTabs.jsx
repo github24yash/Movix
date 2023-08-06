@@ -2,9 +2,16 @@
 import React from 'react'
 import { useState } from 'react'
 import './style.scss'
+// import PropTypes from 'prop-types';
+
+// SwitchTabs.PropTypes={
+//     data: PropTypes.node.isRequired,
+//     onTabChange:PropTypes.node.isRequired
+//     };
 
 
 const SwitchTabs = ({data,onTabChange}) => {
+    
 
 const [selectedTab,setSelectedTab]=useState(0);
 const [left,setLeft]= useState(0);

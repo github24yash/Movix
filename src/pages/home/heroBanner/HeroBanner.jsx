@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useState ,useEffect} from 'react'
 import './style.scss'
 import {useNavigate } from 'react-router-dom'

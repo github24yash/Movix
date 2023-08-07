@@ -4,25 +4,25 @@ import SwitchTabs from '../../../components/switchTabs/SwitchTabs'
 import UseFetch from '../../../hooks/UseFetch'
 import Carousel from '../../../components/carousel/Carousel'
 
-const Trending = () => {
+const Popular = () => {
 
-    const[endpoint,setEndpoint]=useState("day");
+    const[endpoint,setEndpoint]=useState("movie");
 
-    const{data,loading} =  UseFetch(`/trending/all/${endpoint}`);
+    const{data,loading} =  UseFetch(`/${endpoint}/popular`);
 
   const  onTabChange=(tab)=>{
-        setEndpoint(tab === "Day"? "day":"week");
+        setEndpoint(tab === "Movies"? "movie":"tv");
     };
 
   return (
     <div className='carouselSection'>
         <ContentWrapper>
-            <span className='carouselTitle'>Trending</span>
-            <SwitchTabs data={["Day","Week"]} onTabChange={onTabChange}/>
+            <span className='carouselTitle'>What&apos;s Popular</span>
+            <SwitchTabs data={["Movies","Tv Shows"]} onTabChange={onTabChange}/>
         </ContentWrapper>
-        <Carousel data={data?.results} loading={loading}/>
+        <Carousel data={data?.results} loading={loading} endpoint={endpoint}/>
     </div>
   )
 }
 
-export default Trending
+export default Popular;
